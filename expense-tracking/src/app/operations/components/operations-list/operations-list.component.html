@@ -1,0 +1,10 @@
+@if (operations.length > 0){
+  @for (operation of operations; track operation.id!){
+    <app-operation-card
+      [operation]="operation"
+      (deleteClicked)="removeOperation($event)"
+    />
+  }
+} @else {
+  <app-empty-placeholder/>
+}

@@ -1,0 +1,102 @@
+<div class="columns is-centered">
+  <div class="column is-4-desktop is-8-tablet is-full-mobile">
+    <!-- Header -->
+    <div class="block">
+      <p class="title is-4">Edit account</p>
+    </div>
+
+    <!-- Success -->
+    @if(isSuccess){
+      <div class="block">
+        <div class="notification is-success">
+          <p>The item was updated successfully</p>
+        </div>
+      </div>
+    }
+
+    <!-- Error -->
+    @if(isError){
+      <div class="block">
+        <div class="notification is-danger">
+          <p>Something went wrong. Please try again later</p>
+        </div>
+      </div>
+    }
+
+    <!-- Form -->
+    <div class="block">
+      <form (submit)="onFormSubmit()" [formGroup]="accountUpdateForm">
+
+        <div class="field">
+          <label class="label">Account name</label>
+          <div class="control">
+            <input
+              [class.is-skeleton]="account == undefined"
+              [class.is-danger]="accountUpdateForm.get('name')?.touched && !accountUpdateForm.get('name')?.valid"
+              [class.is-success]="accountUpdateForm.get('name')?.touched && accountUpdateForm.get('name')?.valid"
+              formControlName="name"
+              placeholder="Enter an account name..."
+              type="text"
+              class="input"
+            >
+          </div>
+          @if (accountUpdateForm.get('name')?.touched && accountUpdateForm.get('name')?.hasError('required')) {
+            <p class="help is-danger">
+            <span class="icon">
+              <i class="bx bx-error"></i>
+            </span>
+              <span>This field cannot be empty</span>
+            </p>
+          }
+
+        </div>
+
+        <div class="block">
+          <p class="label block">Account type</p>
+          <div class="tags">
+            <!-- Cash-->
+            <span
+              (click)="accountType = 'CASH'"
+              [class.is-link]="accountType == 'CASH'"
+              class="tag is-medium is-clickable is-rounded">
+              <span>Cash</span>
+            </span>
+            <!-- Bank account-->
+            <span
+              (click)="accountType = 'BANK_ACCOUNT'"
+              [class.is-link]="accountType == 'BANK_ACCOUNT'"
+              class="tag is-medium is-clickable is-rounded">
+              <span>Bank account</span>
+            </span>
+            <!-- Credit card-->
+            <span
+              (click)="accountType = 'CREDIT_CARD'"
+              [class.is-link]="accountType == 'CREDIT_CARD'"
+              class="tag is-medium is-clickable is-rounded">
+              <span>Credit card</span>
+            </span>
+            <!-- -->
+          </div>
+        </div>
+
+        <!-- Buttons -->
+        <div class="buttons">
+          <button
+            [disabled]="!accountUpdateForm.valid"
+            [class.is-skeleton]="account == undefined"
+            [class.is-loading]="isFormLoading"
+            type="submit"
+            class="button is-primary">
+            Save
+          </button>
+
+          <button
+            (click)="onCancel()"
+            class="button"
+            type="button">Cancel</button>
+        </div>
+      </form>
+    </div>
+
+  </div>
+</div>

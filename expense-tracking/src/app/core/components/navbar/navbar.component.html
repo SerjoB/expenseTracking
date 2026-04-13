@@ -1,0 +1,44 @@
+<nav class="navbar has-shadow is-fixed-top">
+  <div class="navbar-brand">
+    <a
+      role="button"
+      class="navbar-burger"
+      aria-label="menu"
+      aria-expanded="false"
+      (click)="isMenuActive = !isMenuActive"
+      [class.is-active]="isMenuActive"
+    >
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+    </a>
+  </div>
+  <div class="navbar-menu" [class.is-active]="isMenuActive">
+    @if (isAuthenticated){
+      <div class="navbar-start">
+        <a [routerLink]="['/dashboard']" class="navbar-item">Dashboard</a>
+        <a [routerLink]="['/operations']" class="navbar-item">Operations</a>
+        <a [routerLink]="['/categories']" class="navbar-item">Categories</a>
+        <a [routerLink]="['/accounts']" class="navbar-item">Accounts</a>
+      </div>
+      <div class="navbar-end">
+
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link">{{currentUserName}}</a>
+          <div class="navbar-dropdown">
+            <a [routerLink]="['/users/user']" class="navbar-item">My profile</a>
+            <a (click)="logout()" class="navbar-item">Logout</a>
+          </div>
+        </div>
+
+
+      </div>
+    } @else {
+      <div class="navbar-end">
+        <a [routerLink]="['/auth/login']" class="navbar-item">Login</a>
+        <a [routerLink]="['/users/signup']" class="navbar-item">Signup</a>
+      </div>
+    }
+  </div>
+</nav>

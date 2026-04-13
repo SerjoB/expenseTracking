@@ -1,0 +1,6 @@
+server:
+  port: ${PORT}
+spring:
+  jpa:
+    hibernate:
+      ddl-auto: validate

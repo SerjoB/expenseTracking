@@ -1,0 +1,25 @@
+@import "../node_modules/bulma/css/versions/bulma-no-dark-mode.css";
+@import "../node_modules/boxicons/css/boxicons.css";
+
+body {
+  font-family: "Outfit", sans-serif;
+}
+
+.input {
+  font-family: "Outfit", sans-serif;
+}
+
+.textarea {
+  font-family: "Outfit", sans-serif;
+}
+
+/* App styles */
+
+.toolbar-container {
+  border-style: solid;
+  border-color: #FAFAFA;
+  background-color: #FAFAFA;
+  border-width: 1px;
+  padding: 10px;
+  border-radius: 6px;
+}

@@ -1,0 +1,26 @@
+<!-- Header -->
+<div class="block">
+  <p class="title is-2">Accounts</p>
+</div>
+
+<!-- Toolbar -->
+<div class="block">
+  <div class="toolbar-container">
+    <div class="level">
+      <div class="level-left">
+        <div class="level-item">
+          <app-add-account (onCreateAccount)="createAccount($event)"/>
+        </div>
+        <div class="level-item">
+          <app-accounts-sort-dropdown (onSortSelection)="sortCategories($event)"/>
+        </div>
+      </div>
+      <div class="level-right"></div>
+    </div>
+  </div>
+</div>
+
+<!-- Items list -->
+<app-accounts-list
+  (onRemoveClicked)="deleteAccount($event)"
+  [accounts]="accountsList"/>

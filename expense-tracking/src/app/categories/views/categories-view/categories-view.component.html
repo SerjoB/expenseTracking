@@ -1,0 +1,34 @@
+<!-- Header -->
+<div class="block">
+  <p class="title is-2">Categories</p>
+</div>
+
+<!-- Toolbar -->
+<div class="block">
+  <div class="toolbar-container">
+    <div class="level">
+      <!-- Left sidebar -->
+      <div class="level-left">
+        <!-- Add button -->
+        <div class="level-item">
+          <app-add-category (onCreateCategory)="createCategory($event)"/>
+        </div>
+        <!-- Sort button -->
+        <div class="level-item">
+          <app-categories-sort-dropdown (onSortSelection)="sortCategories($event)"/>
+        </div>
+      </div>
+      <!-- Right sidebar -->
+      <div class="level-right"></div>
+    </div>
+  </div>
+</div>
+
+<!-- Items list -->
+@if (!isLoadingError){
+  <app-categories-list
+    [categories]="categoriesList"
+    (onRemoveClicked)="deleteCategory($event)"/>
+} @else {
+  <app-error-placeholder/>
+}

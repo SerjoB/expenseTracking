@@ -1,0 +1,26 @@
+<!-- Header -->
+<div class="block">
+  <p class="title is-2">Operations</p>
+</div>
+
+<!-- Toolbar -->
+<div class="block">
+  <div class="toolbar-container">
+    <div class="level">
+      <div class="level-left">
+        <div class="level-item">
+          <app-add-operation (onCreateOperation)="createOperation($event)"/>
+        </div>
+        <div class="level-item">
+          <app-operations-sort-dropdown (onSortSelection)="sortOperations($event)"/>
+        </div>
+      </div>
+      <div class="level-right"></div>
+    </div>
+  </div>
+</div>
+
+<!-- Items list -->
+<app-operations-list
+  [operations]="operationsList"
+  (onRemoveClicked)="deleteOperation($event)"/>
